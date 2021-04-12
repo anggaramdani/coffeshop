@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="produk"
+            type="com.relife.coffeshops.models.ModelProduk" />
+        
+        <variable
+            name="coffeInterface"
+            type="com.relife.coffeshops.adapters.CoffeListAdapter.CoffeInterface" />
+
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:onClick="@{() -> coffeInterface.onItemClick(produk)}"
+        >
+
+        <ImageView
+            android:id="@+id/produkImageView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/kopi2"
+            android:produkImage="@{produk.images}"/>
+
+        <TextView
+            android:id="@+id/namaProduk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@{produk.nama}"
+            android:fontFamily="@font/lora_bold"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+            android:layout_gravity="center" />
+
+        <TextView
+            android:id="@+id/hargaProduk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@{`Rp. `+ produk.harga}"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+            android:layout_gravity="center" />
+
+        <Button
+            android:id="@+id/addButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Tambah Produk"
+            android:layout_gravity="center"
+            android:onClick="@{() -> coffeInterface.tambahItem(produk)}"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+            style="@style/Widget.MaterialComponents.Button.TextButton" />
+    </LinearLayout>
+</layout>
